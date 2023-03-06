@@ -1,0 +1,9 @@
+.cadastro{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.buttonSubmitCadastro{
+
+    width: 80px;
+}
