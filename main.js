@@ -22,14 +22,16 @@ adicionarLivro(){
       
 }
 
-listarLivros(){
-
+listarLivros(busca){
     for(let cont of this.cadastroDeLivro){
-        
-        
-        alert("Livros encontrados:" +"\n" + cont.nome +"\n" + "R$" +" "+ cont.preco)
+        if(cont.nome == busca){
+            alert("Livros encontrados:" +"\n" + cont.nome +"\n" + "R$" +" "+ cont.preco)
+        }else{
+            alert("Nenhum livro encontrado com o título " + busca)
+        } 
     }
 }
+
 removerlivro(indice){
     this.cadastroDeLivro.splice(indice,1)
 
@@ -64,8 +66,10 @@ function livraria(){
                 break
 
             case buscar:
-                add.listarLivros()
-            break
+                let busca = prompt("Digite o livro que deseja buscar")
+                add.listarLivros(busca)
+                break
+
             case remover:
                 let indice = parseInt( prompt ("Escolha o índice que deseja remover:"))
                 add.removerlivro(indice)
