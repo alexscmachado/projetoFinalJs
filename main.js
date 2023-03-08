@@ -23,13 +23,25 @@ adicionarLivro(){
 }
 
 listarLivros(busca){
-    for(let cont of this.cadastroDeLivro){
-        if(cont.nome == busca){
-            alert("Livros encontrados:" +"\n" + cont.nome +"\n" + "R$" +" "+ cont.preco)
-        }else{
-            alert("Nenhum livro encontrado com o título " + busca)
-        } 
+   /* for(let cont of this.cadastroDeLivro){
+       let inputBusca = true 
+        switch(inputBusca){
+            case(cont.nome == busca):
+                alert("Livros encontrados:" +"\n" + cont.nome +"\n" + "R$" +" "+ cont.preco)
+                break
+
+            default:
+                alert("Nenhum livro encontrado com o título " + busca)
+        }
     }
+    this.cadastroDeLivro.forEach(element => {
+        if(element.nome == busca){
+            alert("Livros encontrados:" +"\n" + cont.nome +"\n" + "R$" +" "+ cont.preco)
+        } else{
+            alert("Nenhum livro encontrado com o título " + busca)
+        }
+        
+    });*/
 }
 
 removerlivro(indice){
