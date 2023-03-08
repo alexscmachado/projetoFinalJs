@@ -23,16 +23,28 @@ adicionarLivro(){
 }
 
 listarLivros(){
-
-    for(let cont of this.cadastroDeLivro){
+  
+   for(let cont of this.cadastroDeLivro){
         
         
         alert("Livros encontrados:" +"\n" + cont.nome +"\n" + "R$" +" "+ cont.preco)
     }
+
+      
+    }
+
+
+    
 }
 removerlivro(indice){
     this.cadastroDeLivro.splice(indice,1)
 
+}
+buscarLivro(){
+      this.cadastroDeLivro.forEach((nomes) => {
+        alert (this.cadastroDeLivro.nome)
+        
+      });
 }
 }
     
@@ -64,6 +76,7 @@ function livraria(){
                 break
 
             case buscar:
+                // let nomeBusca=prompt("Digite o nome do livro que deseja buscar:")
                 add.listarLivros()
             break
             case remover:
