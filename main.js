@@ -10,15 +10,25 @@ class Adicionar{
     }
     adicionarLivro(){
     
-        let nome = prompt ("Digite o nome do  Título ")      
-        let autor = prompt ("Digite o nome do Autor: ")
-        let editora = prompt ("Digite o nome da Editora: ")
-        let preco = prompt ("Digite o preço: "+"R$:")
+        let nome = document.getElementById("cadastroNome").value     
+        let autor = document.getElementById("cadastroAutor").value
+        let editora = document.getElementById("cadastroEditora").value
+        let preco = document.getElementById("cadastroPreco").value
+     
         const novoLivro = new livrosAdd (nome,autor, editora, preco)
 
             this.cadastroDeLivro.push(novoLivro)
-        
+
+        console.log(this.cadastroDelivro, novoLivro)
+
+        add.listarLivros()
     }
+   dispararButton(){
+
+    let button = document.getElementById("buttonSubmit")
+    button.onclick = ()=>{this.adicionarLivro();
+    }
+   }
 
     buscarLivros(busca){
         let livroNaoEncontrado = true
@@ -35,11 +45,18 @@ class Adicionar{
     }
 
     listarLivros(){
-        let titulosLivros = ""
-        this.cadastroDeLivro.forEach(element => {
-            titulosLivros += element.nome + "\n"
-        });
-        alert("Os livros cadastrados sao:" + "\n" + titulosLivros)
+       
+        // let titulosLivros = ""
+        // this.cadastroDeLivro.forEach(element => {
+            for (const titulosLivros of this.cadastroDeLivro){
+            let pai = document.getElementById("texto")
+            let li = document.createElement("li")
+            li.innerHTML = titulosLivros.nome
+            pai.appendChild(li)
+              // titulosLivros += element.nome + "\n"
+              
+        };
+        
     }
 
     removerlivro(indice){
@@ -47,7 +64,10 @@ class Adicionar{
 
     }
 }
-    
+const add = new Adicionar()
+// add.adicionarLivro()
+add.dispararButton()
+add.listarLivros()
 
 const sair = 0
 const cadastrar = 1
@@ -64,43 +84,43 @@ const escolha = () =>{
    4 - Listar Livros`
 }
 
-function livraria(){
-    const add = new Adicionar()
-   let menu
-    do{
-         menu =parseInt( prompt ("Escolha: "+ escolha()))
+// function livraria(){
+    // const add = new Adicionar()
+//    let menu
+//     do{
+//          menu =parseInt( prompt ("Escolha: "+ escolha()))
 
-         switch(menu){
+//          switch(menu){
 
-            case cadastrar:
-              add.adicionarLivro()
-                break
+//             case cadastrar:
+//               add.adicionarLivro()
+//                 break
 
-            case buscar:
-                let busca = prompt("Digite o livro que deseja buscar")
-                add.buscarLivros(busca)
-                break
+//             case buscar:
+//                 let busca = prompt("Digite o livro que deseja buscar")
+//                 add.buscarLivros(busca)
+//                 break
 
-            case remover:
-                let indice = parseInt( prompt ("Escolha o índice que deseja remover:"))
-                add.removerlivro(indice)
-                break
+//             case remover:
+//                 let indice = parseInt( prompt ("Escolha o índice que deseja remover:"))
+//                 add.removerlivro(indice)
+//                 break
             
-            case listar:
-                add.listarLivros()
-                break
+//             case listar:
+//                 add.listarLivros()
+//                 break
 
-            case sair:
-                alert ("até logo")
-                break
+//             case sair:
+//                 alert ("até logo")
+//                 break
             
-                default:
-                    alert(
-                        "Opção inválida! Escolha uma das opções abaixo:" + escolha())
-         }
+//                 default:
+//                     alert(
+//                         "Opção inválida! Escolha uma das opções abaixo:" + escolha())
+//          }
 
-    }while (menu != sair)
+//     }while (menu != sair)
     
  
-    }
-livraria()
+//     }
+// livraria()
