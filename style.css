@@ -52,7 +52,8 @@ p{
 	line-height: 120%;	
 }
 .cardImg{
- max-width: 300px;   
+ max-width: 200px;  
+ margin: auto; 
 }
 
 .primaryButton{
