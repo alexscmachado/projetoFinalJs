@@ -7,6 +7,7 @@ function livrosAdd(nome, autor, editora, preco){
 class Adicionar{
     constructor(){
         this.cadastroDeLivro = []
+
     }
     adicionarLivro(){
     
@@ -139,3 +140,4 @@ function abrirModal() {
 
 
   livraria()
+
