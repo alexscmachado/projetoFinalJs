@@ -5,50 +5,62 @@ function livrosAdd(nome, autor, editora, preco){
     this.preco=preco
 }
 class Adicionar{
-
-constructor(){
-    this.cadastroDeLivro = []
-
-}
-adicionarLivro(){
-   
-    let nome = prompt ("Digite o nome do  Título ")      
-    let autor = prompt ("Digite o nome do Autor: ")
-    let editora = prompt ("Digite o nome da Editora: ")
-    let preco = prompt ("Digite o preço: "+"R$:")
-    const novoLivro = new livrosAdd (nome,autor, editora, preco)
-
-        this.cadastroDeLivro.push(novoLivro)
-      
-}
-
-listarLivros(){
-
-    for(let cont of this.cadastroDeLivro){
-        
-        
-        alert("Livros encontrados:" +"\n" + cont.nome +"\n" + "R$" +" "+ cont.preco)
+    constructor(){
+        this.cadastroDeLivro = []
     }
-}
-removerlivro(indice){
-    this.cadastroDeLivro.splice(indice,1)
+    adicionarLivro(){
+    
+        let nome = document.querySelector("#cadastroNome").value     
+        let autor = document.querySelector("#cadastroAutor").value
+        let editora = document.querySelector("#cadastroEditora").value
+        let preco = document.querySelector("cadastroPreco").value
+        const novoLivro = new livrosAdd (nome,autor, editora, preco)
 
-}
+            this.cadastroDeLivro.push(novoLivro)
+        
+    }
+    buscarLivros(busca){
+        let livroNaoEncontrado = true
+        this.cadastroDeLivro.forEach(element => {
+            if(element.nome == busca){
+                livroNaoEncontrado = false
+                alert("Livros encontrados:" +"\n" + element.nome +"\n" + "R$" +" "+ element.preco)
+            } 
+            
+        });
+        if (livroNaoEncontrado == true){
+            alert("Nenhum livro encontrado com o título " + busca) 
+        }
+    }
+
+    listarLivros(){
+        let titulosLivros = ""
+        this.cadastroDeLivro.forEach(element => {
+            titulosLivros += element.nome + "\n"
+        });
+        alert("Os livros cadastrados sao:" + "\n" + titulosLivros)
+    }
+
+    removerlivro(indice){
+        this.cadastroDeLivro.splice(indice,1)
+
+    }
 }
     
 
-const sair =0
+const sair = 0
 const cadastrar = 1
 const buscar = 2
-const remover =3
+const remover = 3
+const listar = 4
 
 const escolha = () =>{
     return `
    0 - Sair
    1 - Adicionar Livro
-   2 - Listar Livros
+   2 - Buscar Livros
    3 - remover Livro
-   4 - Editar Editar`
+   4 - Listar Livros`
 }
 
 function livraria(){
@@ -64,14 +76,20 @@ function livraria(){
                 break
 
             case buscar:
-                add.listarLivros()
-            break
+                let busca = prompt("Digite o livro que deseja buscar")
+                add.buscarLivros(busca)
+                break
+
             case remover:
                 let indice = parseInt( prompt ("Escolha o índice que deseja remover:"))
                 add.removerlivro(indice)
                 break
             
-                case sair:
+            case listar:
+                add.listarLivros()
+                break
+
+            case sair:
                 alert ("até logo")
                 break
             
@@ -84,4 +102,18 @@ function livraria(){
     
  
     }
-livraria()
+
+
+// Exibir modal de cadastro de livro
+function abrirModal() {
+    const modal = document.getElementById("cadastro-modal");
+    modal.style.display = 'flex';
+  }
+  
+// Fechar modal
+  function fecharModal() {
+    document.getElementById("cadastro-modal").style.display = 'none';
+  }
+
+
+  livraria()
